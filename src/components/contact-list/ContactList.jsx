@@ -1,30 +1,20 @@
 import PropTypes from 'prop-types';
-import { useFetchContactsQuery } from '../../redux/phonebookSlice';
-import { Contacts, ListClipLoader } from './ContactList.styled';
+import { useSelector } from 'react-redux';
+import { getIsLoading, getVisibleContacts } from 'redux/contacts/phonebook-selectors';
 import { ContactItem } from './ContactItem';
-import { useSelector} from 'react-redux';
-import { getFilter } from 'redux/phonebookSelectors';
-
-
+import { ListGroup } from 'react-bootstrap';
+import { ListClipLoader} from './ContactList.styled';
 
 export const ContactList = () => {
+    const contacts = useSelector(getVisibleContacts);
+    const isFetching = useSelector(getIsLoading);
 
-    const getVisibleContacts = (value, contacts) => {
-        return contacts.filter(contact => contact.name.toLowerCase().includes(value.toLowerCase()));  
-    }
-
-    const { data: contacts, isFetching } = useFetchContactsQuery();
-    const value = useSelector(getFilter);
-    let visibleContacts = null;
-    if (contacts) {
-        visibleContacts = getVisibleContacts(value, contacts);
-    }
-       return (
-        <Contacts>
-               <ListClipLoader loading={isFetching} size={50} />
-               {visibleContacts && visibleContacts.map(({ name, phone, id }) => <ContactItem key={id} id={id} name={name} phone={phone} />) }
-        </Contacts>
-    ); 
+    return (
+        <ListGroup as="ul" variant="flush" >
+             <ListClipLoader loading={isFetching} size={50} />
+            {contacts && contacts.map(({ id, name, number }) => <ContactItem key={id} id={id} name={name} number={number} />)}   
+        </ListGroup>
+    );
 }
 
 ContactList.propTypes = {
@@ -32,5 +22,5 @@ ContactList.propTypes = {
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         number: PropTypes.string.isRequired
-    }))
+    })),
 }

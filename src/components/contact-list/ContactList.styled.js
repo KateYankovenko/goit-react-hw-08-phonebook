@@ -1,42 +1,32 @@
 import styled from '@emotion/styled';
-import ClipLoader from 'react-spinners/ClipLoader';
+import { Button, ListGroupItem } from 'react-bootstrap';
+import { ClipLoader } from 'react-spinners';
 
-
-export const Contacts = styled.ul`
-margin: auto;
-box-shadow: 2px 2px 26px 9px #2624FF;
-`;
-
-export const Contact = styled.li`
-display: flex;
-justify-content:space-between;
-align-items: center;
-margin-bottom: ${p => p.theme.space[2]}px;
-font-size: ${p => p.theme.fontSizes.m};
-font-weight: ${p => p.theme.fontWeights.bold};
-`;
-export const DeleteButton = styled.button`
-height: ${p => p.theme.space[5]}px;
-width: ${p => p.theme.space[6]}px;
+export const DeleteButton = styled(Button)`
 background-color: ${p => p.theme.colors.white};
-cursor: pointer;
-border-radius: ${p => p.theme.radii.normal};
-&:hover,
-&:focus{
-    background-color: violet;
+color: ${p => p.theme.colors.black};
+`;
+
+export const ListClipLoader = styled(ClipLoader)`
+position: absolute;
+color:  ${p => p.theme.colors.background};
+top: 70%;
+left: 50%;
+`;
+
+export const StyledListGroupItem = styled(ListGroupItem)`
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+align-items: center;
+width: 100%;
+
+&:nth-of-type(2n){
+  background-color: ${p => p.theme.colors.background};
 }
 `;
 
-export const Tel = styled.span`
-font-weight: ${p => p.theme.fontWeights.normal};
-`;
-export const StyledClipLoader = styled(ClipLoader)`
-margin-right: ${p => p.theme.space[3]}px;
-color:  ${p => p.theme.colors.accent};
-`;
-export const ListClipLoader = styled(ClipLoader)`
-position: absolute;
-color:  ${p => p.theme.colors.accent};
-top: 50%;
-left: 50%;
-`;
+export const ItemWrap = styled.div`
+width: calc(100% / 3);
+text-align: center;
+`
