@@ -2,7 +2,7 @@
   "name": "react-homework-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://KateYankovenko.github.io/goit-react-hw-08-phonebook",
+  "homepage": "https://KateYankovenko.github.io/goit-react-hw-08-phonebook/",
   "dependencies": {
     "@emotion/styled": "^11.10.4",
     "@reduxjs/toolkit": "^1.8.5",
@@ -21,7 +21,7 @@
     "react-hot-toast": "^2.3.0",
     "react-icons": "^4.4.0",
     "react-redux": "^8.0.2",
-    "react-router-dom": "^6.4.0",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.4",
     "react-toastify": "^9.0.8",
